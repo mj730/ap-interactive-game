@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Araling Panlipunan - Classy Vintage Quiz</title>
+    <title>Araling Panlipunan - Absolute Deluxe Vintage Quiz</title>
     <style>
         :root {
-            --primary: #143d44;     /* Deep Historical Teal / Malachite */
-            --accent: #ca9735;      /* Antique Matte Gold / Brass */
-            --bg-canvas: #f4eee3;   /* Aged Linen Parchment */
-            --card-bg: #fffcf7;     /* Premium Textured Book Page */
-            --text-main: #2a231d;   /* Dark Sepia Charcoal */
-            --text-muted: #706556;  /* Muted Soft Umber */
+            --primary: #0f3035;     /* Deep Imperial Malachite */
+            --accent: #c59231;      /* Royal Burnished Gold */
+            --accent-light: #f7ebd3;/* Soft Champagne Accent */
+            --bg-canvas: #f2ebd9;   /* Museum Quality Archeological Linen */
+            --card-bg: #fffdfa;     /* Premium Heavy-Stock Vellum */
+            --text-main: #231c16;   /* Rich Historical Sepia Ink */
+            --text-muted: #6e6150;  /* Aged Oak Dust */
             
             /* High-end matte historical palette for answers */
-            --v-red: #bb4134;       /* Terracotta Red */
-            --v-blue: #2a556f;      /* Deep Maritime Blue */
-            --v-yellow: #be881b;    /* Mustard Ochre */
-            --v-green: #346c4b;     /* Muted Sage Green */
+            --v-red: #b03a2e;       /* Castilian Red */
+            --v-blue: #1f4e5b;      /* Deep Navy Cordillera */
+            --v-yellow: #b37d14;    /* Intramuros Ochre */
+            --v-green: #27593b;     /* Ilustrado Emerald */
+            
+            --feedback-correct: #1e8449;
+            --feedback-wrong: #a93226;
         }
 
         * {
@@ -34,47 +38,49 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            /* Authentic historical document linen weave texture */
+            /* Ultra-high-end subtle linen weave blueprint */
             background-image: 
-                linear-gradient(rgba(42, 35, 29, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(42, 35, 29, 0.02) 1px, transparent 1px);
-            background-size: 16px 16px;
+                linear-gradient(rgba(35, 28, 22, 0.025) 1.5px, transparent 1.5px),
+                linear-gradient(90deg, rgba(35, 28, 22, 0.025) 1.5px, transparent 1.5px);
+            background-size: 14px 14px;
         }
 
-        /* Deluxe Academic Golden Border Frame */
+        /* Top Bar Dynamic Crown */
         .academic-frame {
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--primary) 100%);
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 30%, #fff 50%, var(--accent) 70%, var(--primary) 100%);
             width: 100%;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
         }
 
         header {
-            background-color: var(--primary);
-            color: #fbf9f5;
-            padding: 35px 20px;
+            background: linear-gradient(135deg, #091e21 0%, var(--primary) 100%);
+            color: #fffdfa;
+            padding: 40px 20px;
             text-align: center;
-            box-shadow: inset 0 -6px 12px rgba(0,0,0,0.2), 0 4px 15px rgba(0,0,0,0.08);
-            border-bottom: 3px solid var(--accent);
+            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.3), 0 5px 20px rgba(0,0,0,0.12);
+            border-bottom: 4px solid var(--accent);
+            position: relative;
         }
 
         header h1 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 700;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
             text-transform: uppercase;
         }
 
-        /* Classy Segmented Navigation Tabs */
+        /* Deluxe Floating Navigator */
         nav {
             display: flex;
-            max-width: 520px;
+            max-width: 540px;
             width: 90%;
-            margin: -22px auto 0 auto;
+            margin: -24px auto 0 auto;
             background: var(--card-bg);
-            border-radius: 6px;
-            padding: 4px;
-            box-shadow: 0 10px 30px rgba(42, 35, 29, 0.12);
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: 0 12px 35px rgba(35, 28, 22, 0.16);
             border: 2px solid var(--accent);
             z-index: 10;
         }
@@ -83,65 +89,65 @@
             background: none;
             border: none;
             color: var(--text-muted);
-            padding: 12px;
-            font-size: 0.95rem;
+            padding: 14px 10px;
+            font-size: 0.9rem;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             cursor: pointer;
             flex: 1;
             text-align: center;
-            border-radius: 3px;
-            transition: all 0.2s ease;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         .tab-btn.active {
-            color: #fbf9f5;
+            color: #fffdfa;
             background-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(15, 48, 53, 0.3);
         }
 
-        /* Centralized Content Framework */
         main {
             flex: 1;
-            padding: 45px 20px;
-            max-width: 700px;
+            padding: 50px 20px;
+            max-width: 720px;
             width: 100%;
             margin: 0 auto;
         }
 
         .view {
             display: none;
-            animation: premiumSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: deluxeSlideUpUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .view.active {
             display: block;
         }
 
-        @keyframes premiumSlideUp {
-            from { opacity: 0; transform: translateY(12px); }
+        @keyframes deluxeSlideUpUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Geometric 8-Ray Sun Crest (No Emojis) */
+        /* Stunning Geometric Royal Sun Crest */
         .sun-crest-container {
-            margin: 10px auto 25px auto;
-            width: 90px;
-            height: 90px;
+            margin: 15px auto 30px auto;
+            width: 100px;
+            height: 100px;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: slowRotateCrest 30s linear infinite;
+            animation: nobleRotation 40s linear infinite;
         }
         .sun-core {
-            width: 38px;
-            height: 38px;
-            background: var(--accent);
+            width: 42px;
+            height: 42px;
+            background: radial-gradient(circle, #fcd06a 0%, var(--accent) 100%);
             border-radius: 50%;
             z-index: 5;
-            box-shadow: 0 0 12px rgba(202, 151, 53, 0.4);
-            border: 2px solid var(--card-bg);
+            box-shadow: 0 0 20px rgba(197, 146, 49, 0.6);
+            border: 3px solid var(--card-bg);
         }
         .sun-rays {
             position: absolute;
@@ -150,67 +156,82 @@
         }
         .ray-line {
             position: absolute;
-            top: 0; left: 42px;
+            top: 0; left: 47px;
             width: 6px;
-            height: 90px;
+            height: 100px;
             background: linear-gradient(to bottom, transparent, var(--accent) 15%, var(--accent) 85%, transparent);
         }
         .ray-line:nth-child(2) { transform: rotate(45deg); }
         .ray-line:nth-child(3) { transform: rotate(90deg); }
         .ray-line:nth-child(4) { transform: rotate(135deg); }
 
-        @keyframes slowRotateCrest {
+        @keyframes nobleRotation {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
-        /* Vintage Textbook Double-Border Card Design */
+        /* Archive Document Luxury Card Frame */
         .card {
             background: var(--card-bg);
-            padding: 40px 35px;
-            border-radius: 4px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0,0,0,0.02);
-            border: 1px solid #ded6c9;
+            padding: 45px 40px;
+            border-radius: 2px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0,0,0,0.03);
+            border: 1px solid #dcd3c3;
             position: relative;
+            overflow: hidden;
         }
-        /* Elegant interior border overlay */
+        /* Double framing layouts */
         .card::after {
             content: '';
             position: absolute;
-            top: 8px; left: 8px; right: 8px; bottom: 8px;
-            border: 1px solid #cfc4b2;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid var(--accent);
             pointer-events: none;
+            opacity: 0.7;
         }
         .card::before {
             content: '';
             position: absolute;
-            top: 12px; left: 12px; right: 12px; bottom: 12px;
-            border: 1px dashed #e4dcce;
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 1px dashed #cfc4b0;
             pointer-events: none;
         }
 
-        /* High-End Instructional Banner */
+        /* Pure CSS Filigree Corner Ornaments (Luxury look) */
+        .corner-ornament {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 3px solid var(--accent);
+            z-index: 4;
+            pointer-events: none;
+        }
+        .co-tl { top: 18px; left: 18px; border-right: none; border-bottom: none; }
+        .co-tr { top: 18px; right: 18px; border-left: none; border-bottom: none; }
+        .co-bl { bottom: 18px; left: 18px; border-right: none; border-top: none; }
+        .co-br { bottom: 18px; right: 18px; border-left: none; border-top: none; }
+
+        /* Premium Textured Announcement Plate */
         .panuto-box {
-            background-color: #ebdcb9;
-            border-top: 3px solid var(--primary);
-            border-bottom: 1px solid var(--accent);
-            padding: 18px 24px;
-            margin-bottom: 25px;
-            font-size: 1rem;
-            line-height: 1.5;
+            background: linear-gradient(to right, #ebdcb9, #f5ebd3, #ebdcb9);
+            border: 2px solid var(--primary);
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            line-height: 1.6;
             color: var(--text-main);
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.04);
             font-weight: bold;
+            position: relative;
         }
 
-        /* Inputs & Typography Styling */
         input[type="text"] {
             width: 100%;
-            padding: 15px;
-            font-size: 1.1rem;
-            border: 1px solid #bdae96;
-            border-radius: 2px;
+            padding: 16px;
+            font-size: 1.15rem;
+            border: 1px solid #bbaea0;
+            border-radius: 4px;
             margin-bottom: 25px;
             background-color: #fffefa;
             color: var(--text-main);
@@ -218,74 +239,77 @@
             font-family: 'Times New Roman', Times, serif;
             position: relative;
             z-index: 5;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
         }
         input[type="text"]:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(20, 61, 68, 0.12);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(197, 146, 49, 0.15);
             outline: none;
         }
 
-        /* Classy Action Button with Pulse Glow */
+        /* Magnificent Clean Action Button */
         .btn-block {
             width: 100%;
-            background-color: var(--primary);
-            color: #fbf9f5;
+            background: linear-gradient(to bottom, var(--primary) 0%, #0c2529 100%);
+            color: #fffdfa;
             border: 1px solid var(--accent);
-            padding: 16px;
-            font-size: 1.1rem;
+            padding: 18px;
+            font-size: 1.15rem;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 2px;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             position: relative;
             z-index: 5;
+            box-shadow: 0 5px 15px rgba(15, 48, 53, 0.2);
             animation: cleanPulseGlow 2.5s infinite;
         }
         .btn-block:hover {
-            background-color: #0b2529;
-            transform: translateY(-1px);
-            box-shadow: 0 5px 15px rgba(20, 61, 68, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(15, 48, 53, 0.35);
+            filter: brightness(1.15);
             animation: none;
         }
 
         @keyframes cleanPulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(202, 151, 53, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(202, 151, 53, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(202, 151, 53, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(197, 146, 49, 0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(197, 146, 49, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(197, 146, 49, 0); }
         }
 
-        /* Historical Timer Progress Ribbon */
+        /* Minimalist Glossy Timer Strip */
         .timer-container {
             width: 100%;
             background-color: #ebdcb9;
-            height: 6px;
+            height: 8px;
             overflow: hidden;
-            margin-bottom: 25px;
-            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
         .timer-bar {
             width: 100%;
             height: 100%;
-            background-color: var(--v-red);
+            background: linear-gradient(90deg, var(--v-red), #e74c3c);
             transition: width 1s linear;
         }
 
         .question-text {
-            font-size: 1.45rem;
+            font-size: 1.55rem;
             font-weight: bold;
-            line-height: 1.45;
-            margin-bottom: 35px;
+            line-height: 1.5;
+            margin-bottom: 40px;
             text-align: center;
             color: var(--primary);
+            padding: 0 5px;
         }
 
-        /* Response Grid Layout */
         .options-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 18px;
             position: relative;
             z-index: 5;
         }
@@ -293,37 +317,82 @@
             .options-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        /* Interactive High-End Selection Blocks */
+        /* High-Definition Choice Panels */
         .option-btn {
-            border: 1px solid rgba(0,0,0,0.1);
-            color: #fbf9f5;
-            padding: 24px 20px;
-            font-size: 1.05rem;
+            border: 1px solid rgba(0,0,0,0.08);
+            color: #fffdfa;
+            padding: 26px 22px;
+            font-size: 1.1rem;
             font-weight: bold;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             display: flex;
             align-items: center;
             text-align: left;
-            transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.15s ease, filter 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, filter 0.2s, background 0.2s;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.08);
         }
         .option-btn:hover {
-            filter: brightness(1.08);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            filter: brightness(1.1);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.15);
         }
         
-        .option-btn.opt-A { background: linear-gradient(135deg, var(--v-red), #933025); }
-        .option-btn.opt-B { background: linear-gradient(135deg, var(--v-blue), #1c3c50); }
-        .option-btn.opt-C { background: linear-gradient(135deg, var(--v-yellow), #976b12); }
-        .option-btn.opt-D { background: linear-gradient(135deg, var(--v-green), #245036); }
+        .option-btn.opt-A { background: linear-gradient(135deg, var(--v-red), #8e2a1f); }
+        .option-btn.opt-B { background: linear-gradient(135deg, var(--v-blue), #14353e); }
+        .option-btn.opt-C { background: linear-gradient(135deg, var(--v-yellow), #8b620e); }
+        .option-btn.opt-D { background: linear-gradient(135deg, var(--v-green), #1b4129); }
 
-        /* Fine-line Geometric Indicators (No Emojis) */
+        /* Premium Feedback Structural Shifts */
+        .option-btn.correct-choice {
+            background: var(--feedback-correct) !important;
+            border: 2px solid #fff !important;
+            box-shadow: 0 0 20px rgba(30, 132, 73, 0.7) !important;
+            transform: scale(1.03);
+        }
+        .option-btn.wrong-choice {
+            background: var(--feedback-wrong) !important;
+            opacity: 0.5;
+            animation: simpleShake 0.4s ease;
+        }
+        .option-btn.disabled-choice {
+            pointer-events: none;
+        }
+
+        @keyframes simpleShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+
+        /* Exquisite Status Alert Box (No Emojis, Pure Shapes) */
+        .feedback-banner {
+            margin-top: 30px;
+            padding: 18px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-align: center;
+            border-radius: 4px;
+            display: none;
+            z-index: 5;
+            position: relative;
+            animation: deluxeSlideUpUp 0.3s ease;
+        }
+        .feedback-banner.correct {
+            background-color: #eaeded;
+            color: var(--feedback-correct);
+            border: 2px solid var(--feedback-correct);
+        }
+        .feedback-banner.wrong {
+            background-color: #f9ebd1;
+            color: var(--feedback-wrong);
+            border: 2px solid var(--feedback-wrong);
+        }
+
         .shape-indicator {
             margin-right: 14px;
             font-size: 0.85rem;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.18);
             width: 28px;
             height: 28px;
             display: flex;
@@ -331,73 +400,74 @@
             justify-content: center;
             border-radius: 4px;
             flex-shrink: 0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
-        /* Clean Classic Archive Table */
+        /* Highly Styled Historical Ledger Table */
         table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 0 6px;
-            margin-top: 15px;
+            border-spacing: 0 8px;
+            margin-top: 20px;
             position: relative;
             z-index: 5;
         }
         th { 
             background-color: var(--primary); 
-            color: #fbf9f5; 
+            color: #fffdfa; 
             font-weight: bold; 
-            padding: 14px;
+            padding: 16px 14px;
             border: 1px solid var(--accent);
             text-transform: uppercase;
             font-size: 0.85rem;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
         td {
-            padding: 14px;
-            background-color: #fffefa;
-            border-top: 1px solid #dfd5c4;
-            border-bottom: 1px solid #dfd5c4;
-            font-size: 1rem;
+            padding: 16px 14px;
+            background-color: #fffdfa;
+            border-top: 1px solid #ded5c4;
+            border-bottom: 1px solid #ded5c4;
+            font-size: 1.05rem;
         }
-        td:first-child { border-left: 1px solid #dfd5c4; }
-        td:last-child { border-right: 1px solid #dfd5c4; }
-        tr:nth-child(even) td { background-color: #f7f1e4; }
+        td:first-child { border-left: 1px solid #ded5c4; font-weight: bold; }
+        td:last-child { border-right: 1px solid #ded5c4; }
+        tr:nth-child(even) td { background-color: #f8f3e8; }
 
-        /* Profile & Score Panel */
+        /* Structural Ledger Profiles */
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 20px;
+            gap: 18px;
+            margin-top: 25px;
             position: relative;
             z-index: 5;
         }
         .stat-card {
-            background: #fffefa;
-            border: 1px solid #ced1c7;
-            padding: 20px;
+            background: #fffdfa;
+            padding: 22px;
             text-align: center;
-            border: 1px solid #dfd5c4;
+            border: 1px solid #ded5c4;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
         .stat-card span {
             display: block;
-            font-size: 1.7rem;
+            font-size: 1.9rem;
             font-weight: bold;
             color: var(--primary);
-            margin-top: 6px;
+            margin-top: 8px;
         }
         .badge-display {
             text-align: center;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            color: #7c5816;
-            margin-top: 25px;
-            padding: 18px;
-            background: #fcf4e5;
+            color: #725213;
+            margin-top: 30px;
+            padding: 20px;
+            background: #faf2e3;
             border: 2px dashed var(--accent);
             position: relative;
             z-index: 5;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -417,12 +487,14 @@
     <main>
         <div id="home-view" class="view active">
             <div class="card" style="text-align: center;">
+                <div class="corner-ornament co-tl"></div><div class="corner-ornament co-tr"></div><div class="corner-ornament co-bl"></div><div class="corner-ornament co-br"></div>
+                
                 <div class="sun-crest-container">
                     <div class="sun-rays"><div class="ray-line"></div><div class="ray-line"></div><div class="ray-line"></div><div class="ray-line"></div></div>
                     <div class="sun-core"></div>
                 </div>
-                <h2 style="font-size: 1.6rem; margin-bottom: 12px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px;">Pagsusulit sa Araling Panlipunan</h2>
-                <p style="margin-bottom: 30px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; padding: 0 15px;">Mabuhay! Isulat ang iyong pangalan sa ibaba upang simulan ang akademikong pagsusulit ukol sa katangiang pisikal, heograpiya, at yaman ng kulturang Pilipino.</p>
+                <h2 style="font-size: 1.65rem; margin-bottom: 14px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.8px;">Pagsusulit sa Araling Panlipunan</h2>
+                <p style="margin-bottom: 35px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.65; padding: 0 15px;">Mabuhay! Isulat ang iyong pangalan sa ibaba upang simulan ang akademikong pagsusulit ukol sa katangiang pisikal, heograpiya, at yaman ng kulturang Pilipino.</p>
                 <input type="text" id="username-input" placeholder="Ipasok ang Buong Pangalan...">
                 <button class="btn-block" onclick="startQuiz()">Magsimula ng Pagsusulit</button>
             </div>
@@ -438,21 +510,27 @@
             </div>
 
             <div class="card">
-                <div id="question-number" style="font-weight: bold; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 14px; letter-spacing: 1px;">Dokumento: Tanong 1 ng 10</div>
+                <div class="corner-ornament co-tl"></div><div class="corner-ornament co-tr"></div><div class="corner-ornament co-bl"></div><div class="corner-ornament co-br"></div>
+                
+                <div id="question-number" style="font-weight: bold; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 1.2px;">Dokumento: Tanong 1 ng 10</div>
                 <div id="question-text" class="question-text">Ikinakarga ang katanungan...</div>
                 
                 <div class="options-grid">
-                    <button class="option-btn opt-A" onclick="submitAnswer('A')"><span class="shape-indicator">▲</span> <span id="optA-text">Option A</span></button>
-                    <button class="option-btn opt-B" onclick="submitAnswer('B')"><span class="shape-indicator">◆</span> <span id="optB-text">Option B</span></button>
-                    <button class="option-btn opt-C" onclick="submitAnswer('C')"><span class="shape-indicator">●</span> <span id="optC-text">Option C</span></button>
-                    <button class="option-btn opt-D" onclick="submitAnswer('D')"><span class="shape-indicator">■</span> <span id="optD-text">Option D</span></button>
+                    <button id="btn-opt-A" class="option-btn opt-A" onclick="submitAnswer('A')"><span class="shape-indicator">▲</span> <span id="optA-text">Option A</span></button>
+                    <button id="btn-opt-B" class="option-btn opt-B" onclick="submitAnswer('B')"><span class="shape-indicator">◆</span> <span id="optB-text">Option B</span></button>
+                    <button id="btn-opt-C" class="option-btn opt-C" onclick="submitAnswer('C')"><span class="shape-indicator">●</span> <span id="optC-text">Option C</span></button>
+                    <button id="btn-opt-D" class="option-btn opt-D" onclick="submitAnswer('D')"><span class="shape-indicator">■</span> <span id="optD-text">Option D</span></button>
                 </div>
+
+                <div id="feedback-banner" class="feedback-banner"></div>
             </div>
         </div>
 
         <div id="leaderboards-view" class="view">
             <div class="card">
-                <h2 style="font-size: 1.5rem; text-align: center; margin-bottom: 20px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px;">Talaan ng mga Nangungunang Mag-aaral</h2>
+                <div class="corner-ornament co-tl"></div><div class="corner-ornament co-tr"></div><div class="corner-ornament co-bl"></div><div class="corner-ornament co-br"></div>
+                
+                <h2 style="font-size: 1.5rem; text-align: center; margin-bottom: 20px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.8px;">Talaan ng mga Nangungunang Mag-aaral</h2>
                 <table>
                     <thead>
                         <tr>
@@ -469,7 +547,9 @@
 
         <div id="profile-view" class="view">
             <div class="card">
-                <h2 style="text-align: center; margin-bottom: 5px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px;">Talaan at Kasaysayan</h2>
+                <div class="corner-ornament co-tl"></div><div class="corner-ornament co-tr"></div><div class="corner-ornament co-bl"></div><div class="corner-ornament co-br"></div>
+                
+                <h2 style="text-align: center; margin-bottom: 5px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.8px;">Talaan at Kasaysayan</h2>
                 <h3 id="profile-name" style="text-align:center; font-size: 1.4rem; color: var(--accent); margin-bottom: 20px;">Suriin ang Katayuan</h3>
                 
                 <div class="stats-grid">
@@ -547,6 +627,16 @@
                 return;
             }
             
+            const feedbackBanner = document.getElementById('feedback-banner');
+            feedbackBanner.style.display = "none";
+            feedbackBanner.className = "feedback-banner";
+            
+            const letters = ['A', 'B', 'C', 'D'];
+            letters.forEach(l => {
+                const btn = document.getElementById(`btn-opt-${l}`);
+                btn.className = `option-btn opt-${l}`;
+            });
+
             timeLeft = 20;
             document.getElementById('timer').style.width = "100%";
             
@@ -572,16 +662,35 @@
         function submitAnswer(selectedLetter) {
             clearInterval(timerInterval);
             const correctLetter = quizData[currentQuestionIndex].correct;
+            const feedbackBanner = document.getElementById('feedback-banner');
+            
+            const letters = ['A', 'B', 'C', 'D'];
+            letters.forEach(l => {
+                document.getElementById(`btn-opt-${l}`).classList.add('disabled-choice');
+            });
 
             if(selectedLetter === correctLetter) {
                 const speedBonus = timeLeft * 15; 
                 score += 100 + speedBonus;
+                
+                document.getElementById(`btn-opt-${selectedLetter}`).classList.add('correct-choice');
+                feedbackBanner.innerText = "[ Tumpak ang iyong tugon. Magpatuloy... ]";
+                feedbackBanner.className = "feedback-banner correct";
+            } else {
+                if(selectedLetter !== "") {
+                    document.getElementById(`btn-opt-${selectedLetter}`).classList.add('wrong-choice');
+                }
+                document.getElementById(`btn-opt-${correctLetter}`).classList.add('correct-choice');
+                feedbackBanner.innerText = `[ Kamalian. Ang wastong kasagutan ay Titik ${correctLetter}. ]`;
+                feedbackBanner.className = "feedback-banner wrong";
             }
+
+            feedbackBanner.style.display = "block";
 
             currentQuestionIndex++;
             setTimeout(() => {
                 loadQuestion();
-            }, 400);
+            }, 1500);
         }
 
         function endQuiz() {
