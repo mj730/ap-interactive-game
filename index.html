@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araling Panlipunan - Classy Vintage Quiz</title>
+    <style>
+        :root {
+            --primary: #143d44;     /* Deep Historical Teal / Malachite */
+            --accent: #ca9735;      /* Antique Matte Gold / Brass */
+            --bg-canvas: #f4eee3;   /* Aged Linen Parchment */
+            --card-bg: #fffcf7;     /* Premium Textured Book Page */
+            --text-main: #2a231d;   /* Dark Sepia Charcoal */
+            --text-muted: #706556;  /* Muted Soft Umber */
+            
+            /* High-end matte historical palette for answers */
+            --v-red: #bb4134;       /* Terracotta Red */
+            --v-blue: #2a556f;      /* Deep Maritime Blue */
+            --v-yellow: #be881b;    /* Mustard Ochre */
+            --v-green: #346c4b;     /* Muted Sage Green */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            /* Authentic historical document linen weave texture */
+            background-image: 
+                linear-gradient(rgba(42, 35, 29, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 35, 29, 0.02) 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
+
+        /* Deluxe Academic Golden Border Frame */
+        .academic-frame {
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--primary) 100%);
+            width: 100%;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: #fbf9f5;
+            padding: 35px 20px;
+            text-align: center;
+            box-shadow: inset 0 -6px 12px rgba(0,0,0,0.2), 0 4px 15px rgba(0,0,0,0.08);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+        }
+
+        /* Classy Segmented Navigation Tabs */
+        nav {
+            display: flex;
+            max-width: 520px;
+            width: 90%;
+            margin: -22px auto 0 auto;
+            background: var(--card-bg);
+            border-radius: 6px;
+            padding: 4px;
+            box-shadow: 0 10px 30px rgba(42, 35, 29, 0.12);
+            border: 2px solid var(--accent);
+            z-index: 10;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 12px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+            border-radius: 3px;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            color: #fbf9f5;
+            background-color: var(--primary);
+        }
+
+        /* Centralized Content Framework */
+        main {
+            flex: 1;
+            padding: 45px 20px;
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .view {
+            display: none;
+            animation: premiumSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        @keyframes premiumSlideUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Geometric 8-Ray Sun Crest (No Emojis) */
+        .sun-crest-container {
+            margin: 10px auto 25px auto;
+            width: 90px;
+            height: 90px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slowRotateCrest 30s linear infinite;
+        }
+        .sun-core {
+            width: 38px;
+            height: 38px;
+            background: var(--accent);
+            border-radius: 50%;
+            z-index: 5;
+            box-shadow: 0 0 12px rgba(202, 151, 53, 0.4);
+            border: 2px solid var(--card-bg);
+        }
+        .sun-rays {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .ray-line {
+            position: absolute;
+            top: 0; left: 42px;
+            width: 6px;
+            height: 90px;
+            background: linear-gradient(to bottom, transparent, var(--accent) 15%, var(--accent) 85%, transparent);
+        }
+        .ray-line:nth-child(2) { transform: rotate(45deg); }
+        .ray-line:nth-child(3) { transform: rotate(90deg); }
+        .ray-line:nth-child(4) { transform: rotate(135deg); }
+
+        @keyframes slowRotateCrest {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Vintage Textbook Double-Border Card Design */
+        .card {
+            background: var(--card-bg);
+            padding: 40px 35px;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0,0,0,0.02);
+            border: 1px solid #ded6c9;
+            position: relative;
+        }
+        /* Elegant interior border overlay */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 8px; left: 8px; right: 8px; bottom: 8px;
+            border: 1px solid #cfc4b2;
+            pointer-events: none;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 12px; left: 12px; right: 12px; bottom: 12px;
+            border: 1px dashed #e4dcce;
+            pointer-events: none;
+        }
+
+        /* High-End Instructional Banner */
+        .panuto-box {
+            background-color: #ebdcb9;
+            border-top: 3px solid var(--primary);
+            border-bottom: 1px solid var(--accent);
+            padding: 18px 24px;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--text-main);
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            font-weight: bold;
+        }
+
+        /* Inputs & Typography Styling */
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            border: 1px solid #bdae96;
+            border-radius: 2px;
+            margin-bottom: 25px;
+            background-color: #fffefa;
+            color: var(--text-main);
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            position: relative;
+            z-index: 5;
+        }
+        input[type="text"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(20, 61, 68, 0.12);
+            outline: none;
+        }
+
+        /* Classy Action Button with Pulse Glow */
+        .btn-block {
+            width: 100%;
+            background-color: var(--primary);
+            color: #fbf9f5;
+            border: 1px solid var(--accent);
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 5;
+            animation: cleanPulseGlow 2.5s infinite;
+        }
+        .btn-block:hover {
+            background-color: #0b2529;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(20, 61, 68, 0.25);
+            animation: none;
+        }
+
+        @keyframes cleanPulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(202, 151, 53, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(202, 151, 53, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(202, 151, 53, 0); }
+        }
+
+        /* Historical Timer Progress Ribbon */
+        .timer-container {
+            width: 100%;
+            background-color: #ebdcb9;
+            height: 6px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .timer-bar {
+            width: 100%;
+            height: 100%;
+            background-color: var(--v-red);
+            transition: width 1s linear;
+        }
+
+        .question-text {
+            font-size: 1.45rem;
+            font-weight: bold;
+            line-height: 1.45;
+            margin-bottom: 35px;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        /* Response Grid Layout */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            position: relative;
+            z-index: 5;
+        }
+        @media(min-width: 480px) {
+            .options-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* Interactive High-End Selection Blocks */
+        .option-btn {
+            border: 1px solid rgba(0,0,0,0.1);
+            color: #fbf9f5;
+            padding: 24px 20px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.15s ease, filter 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .option-btn:hover {
+            filter: brightness(1.08);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .option-btn.opt-A { background: linear-gradient(135deg, var(--v-red), #933025); }
+        .option-btn.opt-B { background: linear-gradient(135deg, var(--v-blue), #1c3c50); }
+        .option-btn.opt-C { background: linear-gradient(135deg, var(--v-yellow), #976b12); }
+        .option-btn.opt-D { background: linear-gradient(135deg, var(--v-green), #245036); }
+
+        /* Fine-line Geometric Indicators (No Emojis) */
+        .shape-indicator {
+            margin-right: 14px;
+            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.15);
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Clean Classic Archive Table */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 6px;
+            margin-top: 15px;
+            position: relative;
+            z-index: 5;
+        }
+        th { 
+            background-color: var(--primary); 
+            color: #fbf9f5; 
+            font-weight: bold; 
+            padding: 14px;
+            border: 1px solid var(--accent);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 14px;
+            background-color: #fffefa;
+            border-top: 1px solid #dfd5c4;
+            border-bottom: 1px solid #dfd5c4;
+            font-size: 1rem;
+        }
+        td:first-child { border-left: 1px solid #dfd5c4; }
+        td:last-child { border-right: 1px solid #dfd5c4; }
+        tr:nth-child(even) td { background-color: #f7f1e4; }
+
+        /* Profile & Score Panel */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 5;
+        }
+        .stat-card {
+            background: #fffefa;
+            border: 1px solid #ced1c7;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #dfd5c4;
+        }
+        .stat-card span {
+            display: block;
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-top: 6px;
+        }
+        .badge-display {
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #7c5816;
+            margin-top: 25px;
+            padding: 18px;
+            background: #fcf4e5;
+            border: 2px dashed var(--accent);
+            position: relative;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="academic-frame"></div>
+    <header>
+        <h1>Kultura at Heograpiya Quiz</h1>
+    </header>
+
+    <nav>
+        <button class="tab-btn active" onclick="switchView('home')">Home</button>
+        <button class="tab-btn" onclick="switchView('leaderboards')">Leaderboard</button>
+        <button class="tab-btn" onclick="switchView('profile')">Profile</button>
+    </nav>
+
+    <main>
+        <div id="home-view" class="view active">
+            <div class="card" style="text-align: center;">
+                <div class="sun-crest-container">
+                    <div class="sun-rays"><div class="ray-line"></div><div class="ray-line"></div><div class="ray-line"></div><div class="ray-line"></div></div>
+                    <div class="sun-core"></div>
+                </div>
+                <h2 style="font-size: 1.6rem; margin-bottom: 12px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px;">Pagsusulit sa Araling Panlipunan</h2>
+                <p style="margin-bottom: 30px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; padding: 0 15px;">Mabuhay! Isulat ang iyong pangalan sa ibaba upang simulan ang akademikong pagsusulit ukol sa katangiang pisikal, heograpiya, at yaman ng kulturang Pilipino.</p>
+                <input type="text" id="username-input" placeholder="Ipasok ang Buong Pangalan...">
+                <button class="btn-block" onclick="startQuiz()">Magsimula ng Pagsusulit</button>
+            </div>
+        </div>
+
+        <div id="quiz-view" class="view">
+            <div class="panuto-box">
+                PANUTO: Basahin at unawaing mabuti ang bawat katanungan. Piliin ang titik ng pinakatamang sagot mula sa mga sumusunod na pagpipilian.
+            </div>
+            
+            <div class="timer-container">
+                <div id="timer" class="timer-bar"></div>
+            </div>
+
+            <div class="card">
+                <div id="question-number" style="font-weight: bold; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 14px; letter-spacing: 1px;">Dokumento: Tanong 1 ng 10</div>
+                <div id="question-text" class="question-text">Ikinakarga ang katanungan...</div>
+                
+                <div class="options-grid">
+                    <button class="option-btn opt-A" onclick="submitAnswer('A')"><span class="shape-indicator">▲</span> <span id="optA-text">Option A</span></button>
+                    <button class="option-btn opt-B" onclick="submitAnswer('B')"><span class="shape-indicator">◆</span> <span id="optB-text">Option B</span></button>
+                    <button class="option-btn opt-C" onclick="submitAnswer('C')"><span class="shape-indicator">●</span> <span id="optC-text">Option C</span></button>
+                    <button class="option-btn opt-D" onclick="submitAnswer('D')"><span class="shape-indicator">■</span> <span id="optD-text">Option D</span></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="leaderboards-view" class="view">
+            <div class="card">
+                <h2 style="font-size: 1.5rem; text-align: center; margin-bottom: 20px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px;">Talaan ng mga Nangungunang Mag-aaral</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%">Ranggo</th>
+                            <th style="width: 50%">Pangalan ng Mag-aaral</th>
+                            <th style="width: 25%">Kabuuang Puntos</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-data">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="profile-view" class="view">
+            <div class="card">
+                <h2 style="text-align: center; margin-bottom: 5px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px;">Talaan at Kasaysayan</h2>
+                <h3 id="profile-name" style="text-align:center; font-size: 1.4rem; color: var(--accent); margin-bottom: 20px;">Suriin ang Katayuan</h3>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">Nasagutang Laro <span><font id="stat-games">0</font></span></div>
+                    <div class="stat-card">Pinakamataas na Puntos <span><font id="stat-highscore">0</font></span></div>
+                </div>
+
+                <div id="badge-box" class="badge-display">
+                    Gawad Akademiko: Baguhan (Explorer)
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="academic-frame" style="margin-top: auto; height: 5px;"></div>
+
+    <script>
+        const quizData = [
+            { q: "Ano ang tumutukoy sa pisikal na katangian ng isang lugar tulad ng klima, anyong lupa, at anyong tubig?", a: "A. Ekonomiya", b: "B. Heograpiya", c: "C. Kultura", d: "D. Politika", correct: "B" },
+            { q: "Ayon sa Environmental Determinism, alin ang pangunahing humuhubog sa paraan ng pamumuhay ng tao?", a: "A. Teknolohiya", b: "B. Pisikal na kapaligiran", c: "C. Pamahalaan", d: "D. Edukasyon", correct: "B" },
+            { q: "Ano naman ang pangunahing pananaw ng Possibilism?", a: "A. Walang kakayahan ang tao na baguhin ang kapaligiran.", b: "B. Ang tao ay maaaring umangkop at gamitin ang teknolohiya upang mapaunlad ang pamumuhay.", c: "C. Ang klima lamang ang nakaaapekto sa tao.", d: "D. Pare-pareho ang pamumuhay ng lahat ng tao.", correct: "B" },
+            { q: "Aling kabuhayan ang pinakaangkop sa mga pamayanang malapit sa dagat?", a: "A. Pagmimina", b: "B. Pangingisda", c: "C. Pagtotroso", d: "D. Paggawa ng muwebles", correct: "B" },
+            { q: "Bakit ang kapatagan ay angkop sa malawakang pagsasaka?", a: "A. Dahil malamig ang klima nito.", b: "B. Dahil matarik ang lupain.", c: "C. Dahil patag at mataba ang lupa.", d: "D. Dahil maraming bato sa lugar.", correct: "C" },
+            { q: "Alin sa sumusunod ang karaniwang kabuhayan sa kabundukan?", a: "A. Pangingisda sa dagat", b: "B. Pagmimina at pagtatanim ng gulay", c: "C. Pag-aalaga ng perlas", d: "D. Paggawa ng asin", correct: "B" },
+            { q: "Bakit nakaangat sa lupa ang tradisyunal na Bahay Kubo?", a: "A. Upang maging mas mataas kaysa sa ibang bahay.", b: "B. Upang maprotektahan laban sa baha at magkaroon ng maayos na daloy ng hangin.", c: "C. Upang makakapaglagay ng mas maraming silid.", d: "D. Upang madaling ilipat sa ibang lugar.", correct: "B" },
+            { q: "Ano ang pangunahing dahilan kung bakit makakapal ang bubong ng mga tradisyunal na bahay sa Cordillera?", a: "A. Upang maging maganda ang disenyo.", b: "B. Upang mapanatili ang init sa loob at maprotektahan laban sa malamig na hangin.", c: "C. Upang makapaglagay ng ikalawang palapag.", d: "D. Upang makaiwas sa baha.", correct: "B" },
+            { q: "Bakit gawa sa makapal na bato ang mga tradisyunal na bahay ng mga Ivatan sa Batanes?", a: "A. Dahil wala silang kahoy.", b: "B. Dahil madalas dumaan ang malalakas na bagyo sa kanilang lugar.", c: "C. Dahil mas mura ang bato kaysa kawayan.", d: "D. Dahil gusto nilang gayahin ang mga Espanyol.", correct: "B" },
+            { q: "Ano ang pinakamahalagang aral na matututuhan tungkol sa iba't ibang paraan ng pamumuhay ng mga tao?", a: "A. Dapat pare-pareho ang paraan ng pamumuhay ng lahat.", b: "B. Ang iba't ibang kultura at tirahan ay bunga ng matalinong pag-angkop ng tao sa kanyang kapaligiran.", c: "C. Mas mahusay ang pamumuhay sa lungsod kaysa sa probinsya.", d: "D. Kailangang baguhin ang tradisyunal na paraan ng pamumuhay.", correct: "B" }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timerInterval;
+        let timeLeft = 20;
+        let currentPlayer = "Bisita";
+
+        window.onload = function() {
+            if(!localStorage.getItem('ap_leaderboard')) {
+                localStorage.setItem('ap_leaderboard', JSON.stringify([]));
+            }
+            updateLeaderboardTable();
+            loadProfile();
+        };
+
+        function switchView(viewId) {
+            clearInterval(timerInterval);
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(`${viewId}-view`).classList.add('active');
+            
+            const btnIndex = viewId === 'home' ? 0 : viewId === 'leaderboards' ? 1 : 2;
+            document.querySelectorAll('.tab-btn')[btnIndex].classList.add('active');
+
+            if(viewId === 'leaderboards') updateLeaderboardTable();
+            if(viewId === 'profile') loadProfile();
+        }
+
+        function startQuiz() {
+            const nameInput = document.getElementById('username-input').value.trim();
+            if(!nameInput) {
+                alert("Mangyaring ilagay ang iyong pangalan bago magsimula!");
+                return;
+            }
+            currentPlayer = nameInput;
+            currentQuestionIndex = 0;
+            score = 0;
+            switchView('quiz');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            if(currentQuestionIndex >= quizData.length) {
+                endQuiz();
+                return;
+            }
+            
+            timeLeft = 20;
+            document.getElementById('timer').style.width = "100%";
+            
+            const qData = quizData[currentQuestionIndex];
+            document.getElementById('question-number').innerText = `Dokumento: Tanong ${currentQuestionIndex + 1} ng ${quizData.length}`;
+            document.getElementById('question-text').innerText = qData.q;
+            document.getElementById('optA-text').innerText = qData.a;
+            document.getElementById('optB-text').innerText = qData.b;
+            document.getElementById('optC-text').innerText = qData.c;
+            document.getElementById('optD-text').innerText = qData.d;
+
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').style.width = `${(timeLeft / 20) * 100}%`;
+                if(timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitAnswer("");
+                }
+            }, 1000);
+        }
+
+        function submitAnswer(selectedLetter) {
+            clearInterval(timerInterval);
+            const correctLetter = quizData[currentQuestionIndex].correct;
+
+            if(selectedLetter === correctLetter) {
+                const speedBonus = timeLeft * 15; 
+                score += 100 + speedBonus;
+            }
+
+            currentQuestionIndex++;
+            setTimeout(() => {
+                loadQuestion();
+            }, 400);
+        }
+
+        function endQuiz() {
+            alert(`Tapos na ang laro, ${currentPlayer}!\nAng iyong kabuuang puntos ay: ${score}`);
+            
+            let scoresList = JSON.parse(localStorage.getItem('ap_leaderboard')) || [];
+            scoresList.push({ name: currentPlayer, finalScore: score, time: Date.now() });
+            localStorage.setItem('ap_leaderboard', JSON.stringify(scoresList));
+
+            let profileStats = JSON.parse(localStorage.getItem(`ap_prof_${currentPlayer}`)) || { games: 0, high: 0 };
+            profileStats.games += 1;
+            if(score > profileStats.high) profileStats.high = score;
+            localStorage.setItem(`ap_prof_${currentPlayer}`, JSON.stringify(profileStats));
+
+            switchView('leaderboards');
+        }
+
+        function updateLeaderboardTable() {
+            const dataBody = document.getElementById('leaderboard-data');
+            let scoresList = JSON.parse(localStorage.getItem('ap_leaderboard')) || [];
+
+            scoresList.sort((a,b) => b.finalScore - a.finalScore || b.time - a.time);
+            
+            dataBody.innerHTML = "";
+            if(scoresList.length === 0) {
+                dataBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--text-muted);">Wala pang naitalang score.</td></tr>`;
+                return;
+            }
+
+            scoresList.forEach((entry, index) => {
+                let rankIndicator = index === 0 ? "Kwalipikadong I" : index === 1 ? "Kwalipikadong II" : index === 2 ? "Kwalipikadong III" : `Ranggo ${index + 1}`;
+                dataBody.innerHTML += `
+                    <tr>
+                        <td><strong>${rankIndicator}</strong></td>
+                        <td>${escapeHtml(entry.name)}</td>
+                        <td><strong>${entry.finalScore}</strong></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function loadProfile() {
+            document.getElementById('profile-name').innerText = currentPlayer;
+            let profileStats = JSON.parse(localStorage.getItem(`ap_prof_${currentPlayer}`)) || { games: 0, high: 0 };
+            
+            document.getElementById('stat-games').innerText = profileStats.games;
+            document.getElementById('stat-highscore').innerText = profileStats.high;
+
+            let badge = "Baguhan (Explorer)";
+            if(profileStats.high > 800) badge = "Gat (Elite Scholar)";
+            if(profileStats.high > 1800) badge = "Lakan (Grand Master)";
+            
+            document.getElementById('badge-box').innerText = `Gawad Akademiko: ${badge}`;
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+    </script>
+</body>
+</html>
